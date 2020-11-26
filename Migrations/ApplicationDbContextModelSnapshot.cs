@@ -18,6 +18,7 @@ namespace MicroServiceOrder.Migrations
             modelBuilder.Entity("MicroServiceOrder.ItemOrder", b =>
                 {
                     b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("OrderId")
@@ -39,6 +40,7 @@ namespace MicroServiceOrder.Migrations
             modelBuilder.Entity("MicroServiceOrder.Order", b =>
                 {
                     b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Address")
@@ -49,16 +51,14 @@ namespace MicroServiceOrder.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Products");
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("MicroServiceOrder.ItemOrder", b =>
                 {
-                    b.HasOne("MicroServiceOrder.Order", "Order")
+                    b.HasOne("MicroServiceOrder.Order", null)
                         .WithMany("Items")
                         .HasForeignKey("OrderId");
-
-                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("MicroServiceOrder.Order", b =>

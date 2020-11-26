@@ -93,7 +93,7 @@ namespace MicroServiceOrder.Controllers
         // PUT: api/Orders/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutOrder(string id, Order order)
+        public async Task<IActionResult> PutUpdateOrder(string id, Order order)
         {
             if (id != order.Id)
             {
@@ -124,7 +124,7 @@ namespace MicroServiceOrder.Controllers
         // POST: api/Orders
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Order>> PostOrder(Order order)
+        public async Task<ActionResult<Order>> PostAddOrder(Order order)
         {
             _context.Orders.Add(order);
             try

@@ -2,12 +2,12 @@
 
 namespace MicroServiceOrder.Migrations
 {
-    public partial class First : Migration
+    public partial class first : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Products",
+                name: "Orders",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "TEXT", nullable: false),
@@ -16,7 +16,7 @@ namespace MicroServiceOrder.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Products", x => x.Id);
+                    table.PrimaryKey("PK_Orders", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -32,11 +32,11 @@ namespace MicroServiceOrder.Migrations
                 {
                     table.PrimaryKey("PK_ItemOrders", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ItemOrders_Products_OrderId",
+                        name: "FK_ItemOrders_Orders_OrderId",
                         column: x => x.OrderId,
-                        principalTable: "Products",
+                        principalTable: "Orders",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -51,7 +51,7 @@ namespace MicroServiceOrder.Migrations
                 name: "ItemOrders");
 
             migrationBuilder.DropTable(
-                name: "Products");
+                name: "Orders");
         }
     }
 }

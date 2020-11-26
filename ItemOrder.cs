@@ -13,11 +13,13 @@ namespace MicroServiceOrder
         public string OrderId { get; set; }
         public string ProductId { get; set; }
 
+        [NotMapped]
         public virtual Product Product { get; set; }
         public int Quantity { get; set; }
 
     }
 
+    [NotMapped]
     public class Product
     {
         public string Id { get; set; }
